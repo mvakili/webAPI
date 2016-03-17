@@ -11,21 +11,14 @@
 	This will execute on server and return result like:
 ---
 	{
-	"format":{
-		"result":1
-		},
-	"api":{
-		"result":1
-		},
+	"format":1,
+	"api":1,
 	"response":{
-		"result":1,
-		"return":{
-			"name":"Artificial Intelligence",
-			"price":"1500",
-			"desc":"Edition 4",
-			"city":"Tabriz, Iran",
-			"status":"OPEN"
-			}
+		"name":"Artificial Intelligence",
+		"price":"1500",
+		"desc":"Edition 4",
+		"city":"\u062a\u0628\u0631\u06cc\u0632",
+		"status":"OPEN"
 		}
 	}
 ---
