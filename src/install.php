@@ -37,7 +37,6 @@ $tgmessage->tgacc = $tgacc;
 $tgmessage->book = $book;
 
 $book->user = $user;
-$book->writeAll();
 
 R::store($book);
 R::store($tgmessage);

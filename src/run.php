@@ -1,24 +1,30 @@
 <?php 
 
-
-
-
 Flight::route('/@APIcode:[a-zA-Z]{10}[0-9]{5}/@class:[a-zA-Z]+/@method:[a-zA-Z]+', function ($APIcode, $class, $method)
 {
-	session_id($APIcode);
-	session_start();
+	$api = new WebAPI($APIcode);
+
+	$api->add('format', Result::OK);
+
 	if (class_exists($class) && method_exists($class, $method))
 	{
-		Flight::json(['format' => WebAPI::createResult(Result::OK), 'api' => WebAPI::createResult(Result::OK), 'response' => $class::$method($_REQUEST)]);
+		$api->add('api', Result::OK);
+		$api->add('response', $class::$method($_REQUEST));
 	} else {
-		Flight::json(['format' => WebAPI::createResult(Result::OK), 'api' => WebAPI::createResult(Result::INVALID)]);
+		$api->add('api', Result::INVALID);
 	}
+
+	$api->response();
 });
 
 
 Flight::map('notFound', function ()
 {
-	Flight::json(['format' => WebAPI::createResult(Result::INVALID)]);
+	$api = new WebAPI();
+
+	$api->add('format', Result::INVALID);
+
+	$api->response();
 });
 
 Flight::start();

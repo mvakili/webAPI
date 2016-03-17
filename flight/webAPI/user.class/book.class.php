@@ -13,13 +13,13 @@ class Book extends RedBean_SimpleModel
 	*/
 	public static function getBook($params)
 	{
-		if (!isset($params['id'])) return ['result' => Result::INVALID];
+		if (!isset($params['id'])) return null;
 
 		$book = R::load('book', $params['id']);
 		
-		if($book->id == 0) return ['result' => Result::OK, 'return' => null];
+		if($book->id != $params['id']) return null;
 
-		return ['result' => Result::OK, 'return' => ['name' => $book->name, 'price' => $book->price, 'desc' => $book->desc, 'city' => $book->city, 'status' => $book->status]];
+		return ['name' => $book->name, 'price' => $book->price, 'desc' => $book->desc, 'city' => $book->city, 'status' => $book->status];
 	}
 
 }	
