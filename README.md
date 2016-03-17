@@ -9,6 +9,7 @@
 		with parameter "id=11"
 	
 	This will execute on server and return result like:
+---
 	{
 	"format":{
 		"result":1
@@ -27,5 +28,6 @@
 			}
 		}
 	}
+---
 #
 >>>>>>> 6529d1c7ea886f46ab1dae93a7fae309bf92e2ef
